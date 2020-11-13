@@ -1,4 +1,7 @@
 from django.db import models
+import csv
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 class Cidade(models.Model):
     nome = models.CharField(max_length=200,null=False,blank=False, unique=True, verbose_name="Nome")
@@ -24,8 +27,9 @@ class Pagina(models.Model):
 class Processo(models.Model):
     numero = models.CharField(verbose_name="Número do processo", max_length=100)
     resumo = models.TextField(verbose_name="Resumo")
-    valor_ressarcimento = models.FloatField(verbose_name="Valor de Ressarcimento")
-    valor_multa = models.FloatField(verbose_name="Valor da Multa")
+    tipo_fundo = models.CharField(verbose_name="Tipo do fundo", max_length=200, null=True)
+    valor_ressarcimento = models.CharField(verbose_name="Valor de Ressarcimento", max_length=1500)
+    valor_multa = models.CharField(verbose_name="Valor da Multa", max_length=1500)
     cidade = models.ForeignKey(Cidade, verbose_name="Cidade", on_delete=models.SET_NULL, null=True, blank=True)
     pagina = models.ForeignKey(Pagina, verbose_name="Página", on_delete=models.SET_NULL, null=True, blank=True)
     
@@ -66,3 +70,28 @@ class UploadDados(models.Model):
         String representanda a estatística.
         """
         return str(self.pagina.ano)
+
+        
+@receiver(post_save, sender=UploadDados, weak=False, dispatch_uid='convert_csv')
+def from_csv_to_db(sender, instance, **kwargs):
+    filename = instance.arquivo.name
+    print("Convertendo CSV")
+    with open(filename, newline='') as csvfile:
+        reader = csv.DictReader(csvfile, delimiter=';')
+        for row in reader:
+            city = None
+            process = None
+            page = Pagina.objects.get(ano=instance.pagina.ano)
+            try:
+                city = Cidade.objects.get(nome=row['municipio'])
+            except Cidade.DoesNotExist:
+                city = Cidade(nome=row['municipio'], longitude=row['longitude'], latitude=row['latitude'])
+                city = city.save()
+
+            try:
+                process = Processo(numero=row['processo'],resumo=row['resumo'], tipo_fundo=row['tipo_fundo'], valor_ressarcimento=row['valor_ressarcimento'], valor_multa=row['valor_multa'])
+                process.pagina = page
+                process.cidade = city
+                process.save()
+            except Exception:
+                process = Processo.objects.get(numero=row['processo'])
