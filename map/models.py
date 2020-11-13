@@ -77,6 +77,21 @@ def from_csv_to_db(sender, instance, **kwargs):
     filename = instance.arquivo.name
     print("Convertendo CSV")
     with open(filename, newline='') as csvfile:
-        reader = csv.DictReader(csvfile)
+        reader = csv.DictReader(csvfile, delimiter=';')
         for row in reader:
-            print(row)
+            city = None
+            process = None
+            page = Pagina.objects.get(ano=instance.pagina.ano)
+            try:
+                city = Cidade.objects.get(nome=row['municipio'])
+            except Cidade.DoesNotExist:
+                city = Cidade(nome=row['municipio'], longitude=row['longitude'], latitude=row['latitude'])
+                city = city.save()
+
+            try:
+                process = Processo(numero=row['processo'],resumo=row['resumo'], tipo_fundo=row['tipo_fundo'], valor_ressarcimento=row['valor_ressarcimento'], valor_multa=row['valor_multa'])
+                process.pagina = page
+                process.cidade = city
+                process.save()
+            except Exception:
+                process = Processo.objects.get(numero=row['processo'])
