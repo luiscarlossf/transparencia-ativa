@@ -27,8 +27,8 @@ class Pagina(models.Model):
 class Processo(models.Model):
     numero = models.CharField(verbose_name="Número do processo", max_length=100)
     resumo = models.TextField(verbose_name="Resumo")
-    valor_ressarcimento = models.FloatField(verbose_name="Valor de Ressarcimento")
-    valor_multa = models.FloatField(verbose_name="Valor da Multa")
+    valor_ressarcimento = models.CharField(verbose_name="Valor de Ressarcimento", max_length=1500)
+    valor_multa = models.CharField(verbose_name="Valor da Multa", max_length=1500)
     cidade = models.ForeignKey(Cidade, verbose_name="Cidade", on_delete=models.SET_NULL, null=True, blank=True)
     pagina = models.ForeignKey(Pagina, verbose_name="Página", on_delete=models.SET_NULL, null=True, blank=True)
     
