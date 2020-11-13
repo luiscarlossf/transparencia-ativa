@@ -1,4 +1,7 @@
 from django.db import models
+import csv
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 class Cidade(models.Model):
     nome = models.CharField(max_length=200,null=False,blank=False, unique=True, verbose_name="Nome")
@@ -66,3 +69,13 @@ class UploadDados(models.Model):
         String representanda a estatística.
         """
         return str(self.pagina.ano)
+
+        
+@receiver(post_save, sender=UploadDados, weak=False, dispatch_uid='convert_csv')
+def from_csv_to_db(sender, instance, **kwargs):
+    filename = instance.arquivo.name
+    print("Convertendo CSV")
+    with open(filename, newline='') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            print(row)
