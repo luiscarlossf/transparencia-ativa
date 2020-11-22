@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8" lang="pt-br">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% load static %}
+		<!-- Bootstrap 4 CSS -->
+	<link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+	<link rel="shortcut icon" href="{% static "img/favicon.ico" %}" type="image/x-icon">
+	<link rel="icon" href="{% static "img/favicon.ico" %}" type="image/x-icon">
+	<title>Transparência Ativa</title>
+	<!-- Bootstrap 3 Core CSS -->
+	<!-- Template CSS -->
+	<link rel="stylesheet" href="{% static "assets/css/animate.css" %}" rel="stylesheet">
+	<link rel="stylesheet" href="{% static "assets/css/font-awesome.css" %}" rel="stylesheet">
+	<link rel="stylesheet" href="{% static "assets/css/nexus.css" %}" rel="stylesheet">
+	<link rel="stylesheet" href="{% static "assets/css/responsive.css" %}" rel="stylesheet">
+	<link rel="stylesheet" href="{% static "assets/css/custom.css" %}" rel="stylesheet">
+	<!--Bootstrap 4-->
+	<script src="{% static "js/jquery-3-3-1-slim-min.js" %}"></script>
+	<script src="{% static "js/bootstrap-min.js" %}"></script>
+	<!---->
+</head>
+	<body>
+				<!--Inicio do menu <style>div { border: solid 1px blue;} </style>-->
+		<nav class="navbar navbar-expand-xl navbar-dark bg-dark "  style="background: url({% static "img/bg-cabecalho.png" %}); background-repeat: no-repeat; background-color: #06a7e7; box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.3);">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3">
+						<a class="navbar-brand" href="index.html"> <img src="{% static "img/logo-Transparencia-ativa-negativo.png" %}" alt="Transparência Ativa" title="Transparência Ativa"></a>
+					</div>
+					<div class="col-md-9 margin-top-40">
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample" aria-controls="navbarsExample" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						<div class="collapse navbar-collapse " id="navbarsExample">
+							<ul class="navbar-nav mr-auto mt-4 pt-4 pt-xl-0 mt-xl-0 mx-4 px-4">
+								<li class="nav-item active mx-2">
+									<a class="nav-link" href="index.html" alt="Transparência Ativa" title="Transparência Ativa">Início <span class="sr-only">(current)</span></a>
+								</li>
+								<li class="nav-item ">
+									<a class="nav-link" href="mapa.html" alt="Mapa da Improbidade" title="Mapa da Improbidade">Mapa da Improbidade</a>
+								</li>
+								<li class="nav-item ">
+									<a class="nav-link" href="achados.html" alt="Apontamentos" title="Apontamentos">Apontamentos</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="eventos-turminha.html"  alt="Eventos" title="Eventos">Eventos</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="http://www.mpf.mp.br/pi/sala-de-imprensa/noticias-pi/mpf-no-piaui-conclui-primeira-etapa-do-projeto-transparencia-ativa" target="_blank" alt="Capacitações" title="Capacitações">Capacitações</a>
+								</li>
+								<li class="nav-item ">
+									<a class="nav-link" href="#galeria" alt="Galeria" title="Galeria">Galeria</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="equipe.html"  alt="Equipe" title="Equipe">Equipe</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<div id="content" class="container">
+			<div class="row margin-top-3">
+				<div class="item">
+					<img src="{% static "assets/img/logoprincipal.jpg" %}" usemap="#image-map" alt="Transparência Ativa - Imagem by freepik" title="Transparência Ativa - Imagem by freepik"><font size="2">Designed
+					<a href="https://br.freepik.com/fotos-vetores-gratis/fundo">by Freepik</a></font>
+				</div>
+			</div>
+		</div>
+		<div id="content" class="container">
+			<div class="row margin-vert-30">
+				<div class="col-md-9">
+					<div id="textomapa">
+						<p  class="margin-top-20" align= justify>O <b>Projeto Transparência Ativa</b> é uma iniciativa do Ministério Público Federal (MPF),
+								por meio da Procuradoria da República no Estado do Piauí (PR/PI), que trabalha a prevenção dos atos de corrupção
+								administrativa no estado do Piauí de forma tridimensional, a partir dos eixos da transparência – educação – cidadania.
+								O conceito de Transparência Ativa, nome do Projeto, está disposto no artigo 8º da Lei Nº 12.527, de 18 de novembro de 2011,
+								a chamada Lei de Acesso à Informação (LAI).
+						</p>
+						<p align=justify> O referido normativo determina que é dever dos órgãos e entidades públicas
+								promover, independentemente de requerimentos, a divulgação de informações de interesse coletivo ou geral por eles produzidas ou custodiadas,
+									em local de fácil acesso, no âmbito de suas competências. Nessa perspectiva, é um dos objetivos
+								do Projeto fornecer à sociedade informações e conhecimentos que lhe permita alargar sua percepção sobre os malefícios
+								da corrupção a partir da exposição das sentenças condenatórias proferidas em primeira instância pela Justiça Federal,
+								no estado. 
+						</p>
+						<p align= justify>Além da divulgação das sentenças, o Projeto também promoveu ações de educação e cidadania nos
+									municípios piauienses de Picos, Parnaíba, Floriano e Teresina. Voltadas aos alunos e professores
+									do ensino fundamental, as ações  disseminaram o trabalho do MPF no combate à corrupção, bem como reforçaram,
+									em especial para as crianças, a importância de atitudes positivas de honestidade, respeito às diferenças,
+									cuidados com os animais e acessibilidade como um direito fundamental de todo o cidadão. O Projeto Transparência
+									Ativa conta com o apoio da 5ª Câmara de Coordenação e Revisão do Ministério Público Federal e o patrocínio da
+									Associação Nacional dos Procuradores da República (ANPR).
+						</p>
+					</div>
+				</div>
+				<div class="portfolio-item col-md-3 animate fadeIn">
+					<div class="image-hover">
+						<a href="mapa.html">
+							<figure>
+								<img src="{% static "assets/img/frontpage/mapa.jpg" %}" alt="Mapa das Sentenças de Improbidade">
+								<div class="overlay">
+									<a class="expand" href="mapa.html" alt="Mapa das Sentenças de Improbidade" title="Mapa das Sentenças de Improbidade">Mapa das Sentenças de Improbidade</a>
+								</div>
+							</figure>
+							<h5 class="margin-top-20" alt="Mapa das Sentenças de Improbidade" title="Mapa das Sentenças de Improbidade"><b>Mapa das Sentenças de Improbidade</b></h5>
+							<p class="margin-top-10 margin-bottom-20" align= justify>O Mapa contempla as decisões proferidas pelas Varas da Justiça Federal no Piauí, no ano de 2018,
+								tendo por base as ações ajuizadas pelo MPF, no estado, em anos anteriores.
+							</p>
+							<div class="btn btn-default">
+								<a class="info" href="mapa.html" alt="Leia mais..." title="Leia mais...">Leia mais...</a>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="portfolio-item col-sm-4 animate fadeIn">
+					<div class="image-hover">
+						<a  href="achados.html">
+							<figure>
+								<img src="{% static "assets/img/frontpage/foto1.jpg" %}" alt="Apontamentos do Projeto" title="Apontamentos do Projeto">
+								<div class="overlay">
+										<a class="expand" href="achados.html" alt="Apontamentos do Projeto" title="Apontamentos do Projeto">Apontamentos do Projeto</a>
+								</div>
+							</figure>
+							<div style="text-align:left"><font size="1">Designed
+								<a href="http://www.freepik.com" alt="Imagem by freepik" title="Imagem by freepik"> by Freepik</a></font>
+							</div>
+							<h5 alt="Apontamentos do Projeto" title="Apontamentos do Projeto"><b>Apontamentos do Projeto</b></h5>
+							<p class="margin-top-10 margin-bottom-40" align= justify>O trajeto percorrido pela equipe do Projeto Transparência Ativa nos seus três eixos de atuação: transparência-educação-cidadania foi consolidado e pode ser conferido no documento intitulado “Apontamentos – Projeto Transparência Ativa. </p>
+							<div class="btn btn-default">
+								<a class="info" href="achados.html" alt="Leia mais..." title="Leia mais..." >Leia mais...</a>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="portfolio-item col-sm-4 animate fadeIn">
+					<div class="image-hover" >
+						<a href="eventos-turminha.html">
+							<figure>
+								<img src="{% static "assets/img/frontpage/foto2.jpg" %}" alt="Turminha do MPF nas escolas" title="Turminha do MPF nas escolas">
+								<div class="overlay">
+									<a class="expand" href="eventos-turminha.html" alt="Turminha do MPF nas escolas" title="Turminha do MPF nas escolas">Turminha do MPF nas escolas</a>
+								</div>
+							</figure>
+							<h5 class="margin-top-20" alt="Turminha do MPF nas escolas" title="Turminha do MPF nas escolas">
+								<b>Turminha do MPF nas escolas</b>
+							</h5>
+							<p class="margin-top-10 margin-bottom-20" align= justify>Crianças, com idades entre 6 e 7 anos, todos alunos do fundamental da rede pública de ensino dos municípios piauienses de  Parnaíba, Floriano, Picos e Teresina, aprenderam sobre corrupção, direitos do consumidor, tráfico de animais silvestres e acessibilidade com os personagens da Turminha do MPF.</p>
+							<div class="btn btn-default">
+								<a class="info" href="eventos-turminha.html" alt="Leia mais..." title="Leia mais...">Leia mais...</a>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="portfolio-item col-sm-4 animate fadeIn">
+					<div class="image-hover">
+						<a href="http://www.mpf.mp.br/pi/sala-de-imprensa/noticias-pi/mpf-no-piaui-conclui-primeira-etapa-do-projeto-transparencia-ativa">
+							<figure>
+									<img src="{% static "assets/img/frontpage/foto3.jpg" %}" alt="MPF promoveu capacitações" title="MPF promoveu capacitações">
+								<div class="overlay">
+										<a class="expand" href="http://www.mpf.mp.br/pi/sala-de-imprensa/noticias-pi/mpf-no-piaui-conclui-primeira-etapa-do-projeto-transparencia-ativa" alt="MPF promoveu capacitações" title="MPF promoveu capacitações">MPF promove capacitações para profissionais da Educação</a>
+								</div>
+							</figure>
+							<h5 class="margin-top-20" alt="MPF promoveu capacitações" title="MPF promoveu capacitações"><b>MPF promoveu capacitações</b></h5>
+							<p class="margin-top-10 margin-bottom-20" align= justify>No período de 13 a 30 de setembro de 2019, os municípios piauienses de Parnaíba, Floriano, Picos e Teresina receberam a equipe da Procuradoria da República no Estado do Piauí (PR/PI), que integra o Projeto Transparência Ativa, para a promoção de capacitações voltadas à cidadania.</p>
+								<div class="btn btn-default">
+									<a class="info" href="http://www.mpf.mp.br/pi/sala-de-imprensa/noticias-pi/mpf-no-piaui-conclui-primeira-etapa-do-projeto-transparencia-ativa" target="_blank" alt="Leia mais..." title="Leia mais...">Leia mais...</a>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="base">
+			<div class="container padding-vert-10">
+				<div class="row">
+					<div class="col-md-3 margin-bottom-20">
+						<h3 class="margin-bottom-10">Galeria</h3>
+						<div class="row">
+							<div class="col-md-1"> 
+						</div>
+						<div class="thumbs-gallery" name="galeria" id="galeria">
+							<a class="thumbBox" rel="lightbox-thumbs" href="{% static "assets/img/thumbsgallery/Evento-Parnaiba.jpg" %}" alt="Evento Turminha do MPF em Parnaíba" title="Evento Turminha do MPF em Parnaíba">
+								<img src="{% static "assets/img/thumbsgallery/thumbs/Evento-Parnaiba.jpg" %}" alt="Evento Turminha do MPF em Paraíba" title="Evento Turminha do MPF em Parnaíba">
+							<i></i></a>
+							<a class="thumbBox" rel="lightbox-thumbs" href="{% static "assets/img/thumbsgallery/Evento-Parnaiba2.jpg" %}" alt="Evento Turminha do MPF em Parnaíba" title="Evento Turminha do MPF em Parnaíba">
+								<img src="{% static "assets/img/thumbsgallery/thumbs/Evento-Parnaiba2.jpg" %}" alt="Evento Turminha do MPF em Parnaíba" title="Evento Turminha do MPF em Parnaíba">
+							<i></i></a>
+							<a class="thumbBox" rel="lightbox-thumbs" href="{% static "assets/img/thumbsgallery/Evento-Parnaiba3.jpg" %}" alt="Evento Turminha do MPF em Parnaíba" title="Evento Turminha do MPF em Parnaíba">
+								<img src="{% static "assets/img/thumbsgallery/thumbs/Evento-Parnaiba3.jpg" %}" alt="Evento Turminha do MPF em Parnaíba" title="Evento Turminha do MPF em Parnaíba">
+							<i></i></a>
+							<a class="thumbBox" rel="lightbox-thumbs" href="{% static "assets/img/thumbsgallery/Evento-Floriano.jpg" %}" alt="Evento Turminha do MPF em Floriano" title="Evento Turminha do MPF em Floriano">
+								<img src="{% static "assets/img/thumbsgallery/thumbs/Evento-Floriano.jpg" %}" alt="Evento Turminha do MPF em Floriano" title="Evento Turminha do MPF em Floriano">
+							<i></i></a>
+							<a class="thumbBox" rel="lightbox-thumbs" href="{% static "assets/img/thumbsgallery/Evento-Floriano2.jpg" %}" alt="Evento Turminha do MPF em Floriano" title="Evento Turminha do MPF em Floriano">
+								<img src="{% static "assets/img/thumbsgallery/thumbs/Evento-Floriano2.jpg" %}" alt="Evento Turminha do MPF em Floriano" title="Evento Turminha do MPF em Floriano">
+							<i></i></a>
+							<a class="thumbBox" rel="lightbox-thumbs" href="{% static "assets/img/thumbsgallery/Evento-Floriano3.jpg" %}" alt="Evento Turminha do MPF em Floriano" title="Evento Turminha do MPF em Floriano">
+								<img src="{% static "assets/img/thumbsgallery/thumbs/Evento-Floriano3.jpg" %}" alt="Evento Turminha do MPF em Floriano" title="Evento Turminha do MPF em Floriano">
+							<i></i></a>
+							<a class="thumbBox" rel="lightbox-thumbs" href="{% static "assets/img/thumbsgallery/Evento-Picos.jpg" %}" alt="Evento Turminha do MPF em Picos" title="Evento Turminha do MPF em Picos">
+								<img src="{% static "assets/img/thumbsgallery/thumbs/Evento-Picos.jpg" %}" alt="Evento Turminha do MPF em Picos" title="Evento Turminha do MPF em Picos">
+							<i></i></a>
+							<a class="thumbBox" rel="lightbox-thumbs" href="{% static "assets/img/thumbsgallery/Evento-Picos2.jpg" %}" alt="Evento Turminha do MPF em Picos" title="Evento Turminha do MPF em Picos">
+								<img src="{% static "assets/img/thumbsgallery/thumbs/Evento-Picos2.jpg" %}" alt="Evento Turminha do MPF em Picos" title="Evento Turminha do MPF em Picos">
+							<i></i></a>
+							<a class="thumbBox" rel="lightbox-thumbs" href="{% static "assets/img/thumbsgallery/Evento-Picos3.jpg" %}" alt="Evento Turminha do MPF em Picos" title="Evento Turminha do MPF em Picos">
+								<img src="{% static "assets/img/thumbsgallery/thumbs/Evento-Picos3.jpg" %}" alt="Evento Turminha do MPF em Picos" title="Evento Turminha do MPF em Picos">
+							<i></i></a>
+							<a class="thumbBox" rel="lightbox-thumbs" href="{% static "assets/img/thumbsgallery/Evento-Teresina.jpg" %}" alt="Evento Turminha do MPF em Teresina" title="Evento Turminha do MPF em Teresina">
+								<img src="{% static "assets/img/thumbsgallery/thumbs/Evento-Teresina.jpg" %}" alt="Evento Turminha do MPF em Teresina" title="Evento Turminha do MPF em Teresina">
+							<i></i></a>
+							<a class="thumbBox" rel="lightbox-thumbs" href="{% static "assets/img/thumbsgallery/Evento-Teresina2.jpg" %}" alt="Evento Turminha do MPF em Teresina" title="Evento Turminha do MPF em Teresina">
+								<img src="{% static "assets/img/thumbsgallery/thumbs/Evento-Teresina2.jpg" %}" alt="Evento Turminha do MPF em Teresina" title="Evento Turminha do MPF em Teresina">
+							<i></i></a>
+							<a class="thumbBox" rel="lightbox-thumbs" href="{% static "assets/img/thumbsgallery/Evento-Teresina3.jpg" %}" alt="Evento Turminha do MPF em Teresina" title="Evento Turminha do MPF em Teresina">
+								<img src="{% static "assets/img/thumbsgallery/thumbs/Evento-Teresina3.jpg" %}" alt="Evento Turminha do MPF em Teresina" title="Evento Turminha do MPF em Teresina">
+							<i></i></a>
+							<a class="thumbBox" rel="lightbox-thumbs" href="{% static "assets/img/thumbsgallery/Evento-Parnaiba4.jpg" %}" alt="Evento Turminha do MPF em Parnaíba" title="Evento Turminha do MPF em Parnaíba">
+								<img src="{% static "assets/img/thumbsgallery/thumbs/Evento-Parnaiba4.jpg" %}" alt="Evento Turminha do MPF em Parnaíba" title="Evento Turminha do MPF em Parnaíba">
+							<i></i></a>
+							<a class="thumbBox" rel="lightbox-thumbs" href="{% static "assets/img/thumbsgallery/Evento-Floriano4.jpg" %}" alt="Evento Turminha do MPF em Floriano" title="Evento Turminha do MPF em Floriano">
+								<img src="{% static "assets/img/thumbsgallery/thumbs/Evento-Floriano4.jpg" %}" alt="Evento Turminha do MPF em Floriano" title="Evento Turminha do MPF em Floriano">
+							<i></i></a>
+							<a class="thumbBox" rel="lightbox-thumbs" href="{% static "assets/img/thumbsgallery/Evento-Picos4.jpeg" %}" alt="Evento Turminha do MPF em Picos" title="Evento Turminha do MPF em Picos">
+								<img src="{% static "assets/img/thumbsgallery/thumbs/Evento-Picos4.jpg"  %}" alt="Evento Turminha do MPF em Picos" title="Evento Turminha do MPF em Picos">
+							<i></i></a>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="col-md-7 margin-bottom-20">
+					<div class="row">
+							<div class="col-md-2"> </div>
+							<h3  class="col-md-4 margin-bottom-10">Apoio </h3>
+							<h3  class="col-md-4 margin-bottom-10">Patrocínio </h3>
+							<div class="col-md-2"> </div>
+					</div>
+					<div class="row">
+						<div class="col-md-2"> </div>
+							<div class="col-md-4">
+									<h3 class="margin-bottom-20"></h3>
+									<a href="http://www.mpf.mp.br/atuacao-tematica/ccr5" target="_blank"><img src="{% static "assets/img/camara.jpg" %}" alt="5ª Câmara de Coordenação e Revisão" title="5ª Câmara de Coordenação e Revisão"></a>
+							</div>
+							<div class="col-md-4">
+								<h3 class="margin-bottom-20"></h3>
+							<a href="https://www.anpr.org.br/" target="_blank"><img src="{% static "assets/img/anpr.jpg" %}" alt="Associação Nacional dos Procuradores da República - ANPR" title="Associação Nacional dos Procuradores da República - ANPR"></a>
+							<div class="col-md-2"> </div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-2 margin-bottom-20">
+						<h3 class="margin-bottom-20">Realização</h3>
+						<div class="row">
+								<div class="col-md-1"> </div>
+								<div class="col-md-11">
+									<a href="http://www.mpf.mp.br/pi" target="_blank"><img src="{% static "assets/img/mpfpi.jpg" %}" alt="Ministério Público Federal no Piauí" title="Ministério Público Federal no Piauí"></a>
+								</div>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+			<div class="container padding-vert-10">
+				<div class="row">
+					<div class="col-md-8">
+						<p id="nomepr"><b>Procuradoria da República no Estado do Piauí</b></p>
+						<p id="nome-end">Avenida João XXIII, 1390, bairro Noivos, CEP 64.045-000, Teresina (PI) - Contato:(86) 3214-5915</p>
+					</div>
+					<div class="col-md-4">
+						<div class="row">
+							<div class="col-md-6"></div>
+							<a href="https://www.facebook.com/MPFederal" target="_blank"><img src="{% static "assets/img/face.png" %}" alt="Facebook do MPF" title="Facebook do MPF"></a>
+							<a href="https://twitter.com/@MPF_PI" target="_blank"><img src="{% static "assets/img/twitter.png" %}" alt="Twitter do MPF/PI" title="Twitter do MPF/PI"></a>
+							<a href="https://www.youtube.com/user/tvmpf" target="_blank"><img src="{% static "assets/img/youtube.png" %}" alt="Youtube TVMPF" title="Youtube TVMPF"></a>
+							<a href="https://www.instagram.com/mpf_oficial" target="_blank"><img src="{% static "assets/img/insta.png" %}" alt="Instagram do MPF" title="Instagram do MPF"></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="{% static "assets/js/jquery-min.js" %}" type="text/javascript"></script>
+		<script type="text/javascript" src="{% static "assets/js/bootstrap-min.js" %}" type="text/javascript"></script>
+		<script type="text/javascript" src="{% static "assets/js/scripts.js" %}"></script>
+		<script type="text/javascript" src="{% static "assets/js/jquery-isotope.js" %}" type="text/javascript"></script>
+		<script type="text/javascript" src="{% static "assets/js/jquery-slicknav.js" %}" type="text/javascript"></script>
+		<script type="text/javascript" src="{% static  "assets/js/jquery-visible.js" %}" charset="utf-8"></script>
+		<script type="text/javascript" src="{% static  "assets/js/slimbox2.js" %}" charset="utf-8"></script>
+		<script src="{% static "assets/js/modernizr-custom.js" %}" type="text/javascript"></script>
+	</body>
+</html>
