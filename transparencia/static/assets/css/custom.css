@@ -1,0 +1,70 @@
+/* #Mycod
+================================================== */
+
+body
+{
+    background-color:#eaeaea !important;
+    font:"Titillium Web", sans-serif !important;
+}
+.municipio{
+  background-color:#F0FFFF;
+}
+
+#lista_municipio{
+  background-color: #F0F8FF;
+  left: 7%;
+  top: -348px;
+  position: relative;
+  padding: 0px;
+  margin-bottom: -18em;
+}
+
+#tit_mapa{
+  text-align: center;
+  margin-top: 6%;
+  position: relative;
+  font-size: 24px;
+}
+#mapa_original {
+    margin-left: -1%;
+    margin-top: 2%;
+}
+
+
+#voltar {
+    margin-top: -2.5%;
+    margin-right: 95%;
+}
+a
+{
+    color: #3c8de6;
+    font-size: medium;
+    font:"Titillium Web", sans-serif !important;
+}
+a.link:link
+{   color:white;
+    font:"Titillium Web", sans-serif !important;
+}
+a.link:visited
+{
+     color:white;
+     font:"Titillium Web", sans-serif !important;
+}
+a.link:hover
+{
+     color:white;
+     font:"Titillium Web", sans-serif !important;
+}
+#nomepr{font-size: 17px;}
+#nome-end{font-size: 14px;}
+#rodape
+{
+  background: none repeat scroll 0 0 #363539;
+  height: 34px;
+  position: relative;
+  top: 1050px;
+}
+#textomapa
+{
+    text-indent:3em;
+}

@@ -1,0 +1,28 @@
+{% extends 'home/base.html' %}
+{% block content %}
+  {% load static %}
+  <div id="content" class="container">
+    <div class="row margin-vert-50">
+      <div class="container">
+        <div id="textomapa" class="col-md-12">
+          <div>
+            <h3 alt="Apontamentos – Transparência Ativa" title="Apontamentos – Transparência Ativa">Apontamentos – Transparência Ativa</h3>
+            <p  class="margin-top-20" align= justify>O trajeto percorrido pela equipe do Projeto Transparência Ativa
+             nos seus três eixos de atuação: transparência-educação-cidadania foi consolidado e pode ser conferido
+             no documento intitulado “Apontamentos – Projeto Transparência Ativa”. Além de enfatizar o eixo
+             tridimensional do Projeto e seu alinhamento com o Planejamento Institucional do MPF, o documento
+             lança reflexões sobre a corrupção e seus efeitos deletérios sobre a qualidade de vida e o bem-estar
+             da população diretamente atingida pela malversação dos recursos públicos.</p>
+            <p align= justify>Para tanto, utiliza-se como parâmetro o Índice de Desenvolvimento Humano (IDH),
+               indicador consagrado no meio acadêmico para medir o grau de desenvolvimento de uma determinada
+                sociedade nos quesitos de educação, saúde e renda. As considerações reforçam
+                  a necessidade de fortalecimento e diálogo permanente do corpo social para a atuação concertada
+                  com o Ministério Público e demais órgãos de controle numa conduta proativa de prevenção aos atos
+                  ímprobos.</p>
+          </div>
+            Confira os <a href="{% static "Apontamentos-Projeto-Transparencia Ativa.pdf" %}" alt="Confira os Apontamentos do Projeto Transparência Ativa" title="Confira os Apontamentos do Projeto Transparência Ativa" target="_blank">Apontamentos do Projeto Transparência Ativa</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

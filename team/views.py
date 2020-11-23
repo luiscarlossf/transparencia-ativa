@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
 
 @require_http_methods(["GET"])
-def map(request):
-    context = {
-        'title': "Mapa de Improbidade",
+def team(request):
+    context= {
+        'title': "Equipe",
     }
-    return render(request, 'map/mapa.html', context)
+    return render(request, 'team/equipe.html', context)
