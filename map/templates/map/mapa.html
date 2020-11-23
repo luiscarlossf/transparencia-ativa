@@ -1,0 +1,86 @@
+{% extends 'home/base.html' %}
+{% block content %}
+    {% load static %}
+    <div class="container">
+  		<div class="row">
+  			<div class="col-md-12">
+  	 			<div id="tit_mapa">Mapa das Sentenças de Improbidade</div>
+  				<div ><a href="mapa.html" alt="Mapa original" title="Mapa original">Mapa original</a></div>
+  			</div>
+  		</div>
+    </div>
+  	<div class="container">
+  		<div class="row">
+  			<div class="col-md-9"><div id="map" class="margin-top-5" style=" height: 950px; border: 1px solid #AAA;" > </div>
+  				<div class="row">
+  					<div id="textomapa" class="col-md-12">
+  						 <p  class="margin-top-20" align= justify>O <b>Mapa das Sentenças de Improbidade</b> acima contempla as 66 decisões condenatórias proferidas pelas Varas da Justiça Federal no Piauí
+						no ano de 2018, tendo por base as ações de improbidade administrativa ajuizadas pelo Ministério Público Federal (MPF) no Estado do Piauí (PI)
+						em anos anteriores. A partir desse marco, as condenações serão inseridas no Mapa ano a ano. A iniciativa atende ao princípio da transparência
+						ativa, fornecendo à sociedade as informações necessárias para o efetivo controle social, além de promover a prestação de contas da atuação ministerial,
+						na área do patrimônio público e social.</p>
+						<p align= justify>A ferramenta funciona de forma interativa. Ele dá ao cidadão duas opções de busca: pelo clique no nome do município,
+						disposto na aba lateral da página, ou através dos ícones georreferenciados localizados na própria imagem do
+						Piauí. Os dois caminhos remetem à localização do município na ferramenta. Depois é só clicar no ícone da
+						geolocalização e uma janela com os dados sintéticos de cada sentença proferida pela Justiça se abrirá. Nessa
+						janela será possível conferir o número do processo, o resumo dos fatos e o valor do ressarcimento
+						(acaso tenha havido condenação no bojo dos autos em análise) e/ou da multa aplicada.</p><p align= justify>De posse do número do processo, é possível consultar o andamento da ação diretamente na página
+						da <a href="https://processual.trf1.jus.br/consultaProcessual/" alt="Justiça Federal-1a Região" title="Justiça Federal-1a Região" target="_blank">Justiça Federal - 1a Região.</a></p>
+						<p align= justify>Para facilitar a busca na página da Justiça, disponibilizamos, abaixo, o acesso às seis
+						listas com a jurisdição dos municípios piauienses. De posse dessa informação, a consulta processual será
+						otimizada. Veja o exemplo: </p>
+						<p align= justify>Amarante integra a jurisdição da Seção Judiciária do Piauí. Então, ao clicar
+						na página da Justiça Federal é necessário escolher a opção Piauí e na sequência selecionar JFPI.
+						Já no caso de Palmeira do Piauí, o usuário deve clicar na opção Piauí e na sequência Corrente. </p>
+						<p align= justify>Para descobrir qual a jurisdição do município a ser pesquisado é só buscar
+						nas seguintes opções:</p>
+						<p><a href="http://www.mpf.mp.br/pi/institucional" alt="Justiça Federal-1a Região" title="Justiça Federal-1a Região" target="_blank"> Municípios da Seção Judiciária do Piauí</a></p>
+						<p><a href="http://www.mpf.mp.br/pi/municipios/procuradoria-da-republica-no-municipio-de-corrente" alt="Justiça Federal-1a Região" title="Justiça Federal-1a Região" target="_blank"> Municípios da Subseção Judiciária de Corrente</a></p>
+						<p><a href="http://www.mpf.mp.br/pi/municipios/procuradoria-da-republica-no-municipio-de-sao-raimundo-nonato" alt="Justiça Federal-1a Região" title="Justiça Federal-1a Região" target="_blank"> Municípios da Subseção Judiciária de São Raimundo Nonato</a></p>
+						<p><a href="http://www.mpf.mp.br/pi/municipios/procuradoria-da-republica-no-municipio-de-picos" alt="Justiça Federal-1a Região" title="Justiça Federal-1a Região" target="_blank"> Municípios da Subseção Judiciária de Picos</a></p>
+						<p><a href="http://www.mpf.mp.br/pi/municipios/procuradoria-da-republica-no-municipio-de-parnaiba" alt="Justiça Federal-1a Região" title="Justiça Federal-1a Região" target="_blank"> Municípios da Subseção Judiciária de Parnaíba</a></p>
+						<p><a href="http://www.mpf.mp.br/pi/municipios/procuradoria-da-republica-no-municipio-de-floriano" alt="Justiça Federal-1a Região" title="Justiça Federal-1a Região" target="_blank"> Municípios da Subseção Judiciária de Floriano</a></p>
+						</br>
+						<p align= justify><b>Estatísticas</b> – As 66 sentenças condenatórias proferidas pela 
+						Justiça Federal no Estado do Piauí, em primeira instância, dividem-se em nove áreas temáticas: 
+						Educação, Saúde, Infraestrutura, Seguridade Social, Princípios da Administração Pública, Assistência Social, 
+						Habitação, Reforma Agrária, Turismo e outros (categoria não definida):</p>
+						<p>
+							<ul>
+								<li>Educação: 31 sentenças, do total de 66. O valor representa 46,97%</li>
+								<li>Saúde: 14 sentenças, do total de 66. O valor representa 21,21%</li>
+								<li>Infraestrutura: 6 sentenças, do total de 66. O valor representa 9,09%</li>
+								<li>Seguridade Social: 4 sentenças, do total de 66. O valor representa 6,06%</li>
+								<li>Assistência Social: 3 sentenças, do total de 66. O valor representa 4,55%</li>
+								<li>Outros: 3 sentenças, do total de 66. O valor representa 4,55%</li>
+								<li>Habitação: 2 sentenças, do total de 66. O valor representa 3,03%</li>
+								<li>Reforma Agrária: 2 sentenças, do total de 66. O valor representa 3,03%</li>
+								<li>Turismo: 1 sentença, do total de 66. O valor representa 1,52%</li>
+							</ul>
+						</p>
+  					</div>
+  				</div>
+  				<div class="row">
+  					<div class="col-md-12 margin-bottom-30 margin-top-20">
+                		<div class="col-md-11">
+           					<img class="pull-right" src="{% static "assets/img/grafico_pizza.jpg" %}" alt="Percentual dos desvios nos serviços públicos por Área Temática" title="Percentual dos desvios nos serviços públicos por Área Temática">
+           				</div>
+  			 		</div>
+  				</div>
+  		 	</div>
+  			<div class="col-md-3">
+  				<div class="margin-top-5" style=" border: 1px solid #AAA;" >
+  					<table class="table table-hover">
+  						<thead>
+							<tr >
+								<th>Localização do dano</th>
+							</tr>
+						</thead>
+						<tbody id="tbmunicipio">
+						</tbody>
+  					</table>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+{% endblock content %}
