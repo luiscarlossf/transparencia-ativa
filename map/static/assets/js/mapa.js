@@ -96,3 +96,8 @@ function montaTabela(tabela, cidade, lng, ltd) {
 function showMap(lng, ltd){
    map.setView([lng,ltd],12);
 }
+
+function setMunicipio(processos){
+  let municipios = null;
+  processos.forEach(p ={});
+}
