@@ -6,7 +6,19 @@
   			<div class="col-md-12">
   	 			<div id="tit_mapa">Mapa das Sentenças de Improbidade</div>
 				</br>
-  				<!--<div><a href="mapa.html" alt="Mapa original" title="Mapa original">Mapa original</a></div>-->
+  				<div>
+				  <label for="selectAnos">Ano de referência:</label>
+				  <select name="selectAnos" id="selectAnos">
+				  	{% for pagina in paginas %}
+					    {% if ano == pagina.ano %}
+						<option value={{ pagina.ano }} selected>{{ pagina.ano }}</option>
+						{% else %}
+						<option value={{ pagina.ano }}>{{ pagina.ano }}</option>
+						{% endif %}
+					{% endfor %}
+				  </select>
+				
+				</div>
   			</div>
   		</div>
     </div>
@@ -44,6 +56,7 @@
 						<p><a href="http://www.mpf.mp.br/pi/municipios/procuradoria-da-republica-no-municipio-de-parnaiba" alt="Justiça Federal-1a Região" title="Justiça Federal-1a Região" target="_blank"> Municípios da Subseção Judiciária de Parnaíba</a></p>
 						<p><a href="http://www.mpf.mp.br/pi/municipios/procuradoria-da-republica-no-municipio-de-floriano" alt="Justiça Federal-1a Região" title="Justiça Federal-1a Região" target="_blank"> Municípios da Subseção Judiciária de Floriano</a></p>
 						</br>
+						{% if sentencas %}
 						<p align= justify><b>Estatísticas</b> – As {{ total_sentencas }} sentenças condenatórias proferidas pela 
 						Justiça Federal no Estado do Piauí, em primeira instância, dividem-se em algumas áreas temáticas:</p>
 						<p>
@@ -53,6 +66,9 @@
 								{% endfor %}
 							</ul>
 						</p>
+						{% else %}
+						<p align= justify><b>Estatísticas</b> – Nenhuma sentença foi dada nesse ano.</p>
+						{% endif %}
   					</div>
   				</div>
   				<div class="row">
@@ -78,4 +94,13 @@
   			</div>
   		</div>
   	</div>
+	<script>
+		var selectAnos = document.getElementById('selectAnos');
+		function mudaAno(){
+			let ano = selectAnos.value;
+			window.location.href = 'http://localhost:8000/mapa.html/'+ano+'/';
+		}
+		selectAnos.onchange = mudaAno;
+		//
+	</script>
 {% endblock content %}
