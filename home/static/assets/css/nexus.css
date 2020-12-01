@@ -462,10 +462,10 @@ h1.logo-text a {
 }
 /* Button Colors */
 .btn-default {
-  background-color: rgba(0, 0, 0, 0.043);
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 4px;
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.05) inset;
+  background-color: rgba(0, 0, 0, 0.0);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+  /*box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.05) inset;*/
   margin: 0;
 }
 .btn-green {
@@ -990,7 +990,7 @@ h4 {
   line-height: 32px;
 }
 h5 {
-  font-size: 1.1em;
+  font-size: 1.4em;
 }
 h6 {
   font-size: 1em;
@@ -1326,10 +1326,10 @@ i.fa.center {
   max-width: 100%;
 }
 .image-hover {
-  background-color:#D5D5D5 !important;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  background-color:#ffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.05);
   border-radius: 5px;
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.05) inset;
+  /*box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.05) inset;*/
   margin-bottom: 10px;
   padding: 15px;
   overflow: hidden;
@@ -1393,7 +1393,6 @@ i.fa.center {
   position: absolute;
   padding: 3px 15px;
   border-width: 1px 0px 0 1px;
-  border-radius: 5px 0 0 0;
 }
 .portfolio-group {
   width: 100% !important;

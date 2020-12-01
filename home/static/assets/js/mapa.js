@@ -115,22 +115,23 @@ function convertInputToHTML(cidades){
       texto_popup += "<strong>Proc.:</strong> "+p.numero.trim()+";";
       if(p.resumo)
         texto_popup += "<strong>Resumo:</strong> "+p.resumo.trim()+"; ";
-      console.log(p.valor_ressarcimento);
       if(p.valor_ressarcimento !== '0'){
-        var valor = parseInt(p.valor_ressarcimento.trim(), 10);
-        if(valor !== NaN)
+        let valor = parseFloat(p.valor_ressarcimento.trim().replace(',','.'), 10);
+        if(valor){
           valor = new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(valor);
-        else
-          valor = p.valor_ressarcimento;
-        texto_popup += "<strong>Valor ressarcimento:</strong> "+valor+"; ";
+          texto_popup += "<strong>Valor ressarcimento:</strong> "+valor+"; ";
+        }else
+          texto_popup += "<strong>Valor ressarcimento:</strong> "+p.valor_ressarcimento+"; "; 
+        
       }
       if(p.valor_multa !== '0'){
-        var valor = parseInt(p.valor_multa.trim(), 10);
-        if(valor !== NaN)
+        let valor = parseFloat(p.valor_multa.trim().replace(',','.'), 10);
+        if(valor){
           valor = new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(valor);
-        else
-          valor = p.valor_multa;
-        texto_popup += "<strong>Valor multa:</strong> "+valor+";";
+          texto_popup += "<strong>Valor multa:</strong> "+valor+";";
+        }else
+          texto_popup += "<strong>Valor multa:</strong> "+p.valor_multa+";";
+        
       }
     });
     texto_popup += "</p>";

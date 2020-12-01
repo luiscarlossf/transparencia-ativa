@@ -58,7 +58,7 @@ class UploadDados(models.Model):
 def from_csv_to_db(sender, instance, **kwargs):
     filename = instance.arquivo.name
     print("Convertendo CSV")
-    with open(filename, newline='') as csvfile:
+    with open(filename, newline='', encoding="utf8") as csvfile:
         reader = csv.DictReader(csvfile, delimiter=';')
         for row in reader:
             city = None

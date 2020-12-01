@@ -3,7 +3,7 @@
 
 body
 {
-    background-color:#eaeaea !important;
+    background-color:#f8f8f8 !important;
     font:"Titillium Web", sans-serif !important;
 }
 .municipio{
@@ -38,7 +38,7 @@ body
 a
 {
     color: #3c8de6;
-    font-size: medium;
+    font-size: 1em;
     font:"Titillium Web", sans-serif !important;
 }
 a.link:link

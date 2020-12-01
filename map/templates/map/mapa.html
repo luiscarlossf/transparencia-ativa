@@ -75,7 +75,7 @@
   				<div class="row">
   					<div class="col-md-12 margin-bottom-30 margin-top-20">
                 		<div class="col-md-11">
-						    <div id="piechart" style="width: 900px; height: 500px;"></div>
+						    <div id="piechart" style="max-width: 700px; height: 500px;"></div>
            					<!--<img class="pull-right" src="{% static "assets/img/grafico_pizza.jpg" %}" alt="Percentual dos desvios nos serviços públicos por Área Temática" title="Percentual dos desvios nos serviços públicos por Área Temática">-->
            				</div>
   			 		</div>
@@ -114,7 +114,6 @@
 		if(xhr.readyState == 4){
 			if(xhr.status == 200){
 			dados = JSON.parse(xhr.responseText);
-			console.log(dados);
 			municipio = convertInputToHTML(dados.cidades);
 			insertDataToMap();
 			}
