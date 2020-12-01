@@ -10,17 +10,17 @@ def map(request):
     '''
     Retorna os dados referente ao ano mais recente.
     '''
-    last_pagina = Pagina.objects.last()
+    pagina = Pagina.objects.last()
     
-    if(last_pagina):
+    if(pagina):
         paginas = Pagina.objects.all()
-        processos = Processo.objects.filter(pagina=last_pagina)
-        s = get_statistic(processos)
+        processos = Processo.objects.filter(pagina=pagina)
+        s = get_statistic(pagina)
         context = {
             'title': "Mapa de Improbidade",
             'processos': list(processos.values()),
-            'ano': last_pagina.ano,
-            'pagina': last_pagina,
+            'ano': pagina.ano,
+            'pagina': pagina,
             'paginas': list(paginas),
             'total_sentencas': s['total'],
             'sentencas': s['sentencas'],
@@ -51,6 +51,7 @@ def map_json(request, year):
         return HttpResponseNotAllowed('<h1>Page not found</h1>')
     cidades = Cidade.objects.all().values()
     saida = list()
+    s = get_statistic(pagina)
     for cidade in cidades:
         cidade['processos'] = list(Processo.objects.filter(pagina=pagina, cidade__id=cidade['id']).values())
         if(len(cidade['processos']) != 0):
@@ -59,6 +60,7 @@ def map_json(request, year):
         'title': "Mapa de Improbidade",
         'cidades': saida,
         'ano': year,
+        'sentencas': s['sentencas'],
     }
     return JsonResponse(context, safe=True)
 
@@ -73,7 +75,7 @@ def map_by_year(request, year):
     except Pagina.DoesNotExist:
         return HttpResponseNotAllowed('<h1>Page not found</h1>')
     processos = Processo.objects.filter(pagina=pagina)
-    s = get_statistic(processos)
+    s = get_statistic(pagina)
     context = {
         'title': "Mapa de Improbidade",
         'processos': list(processos.values()),
@@ -85,11 +87,12 @@ def map_by_year(request, year):
     }
     return render(request, 'map/mapa.html', context)
 
-def get_statistic(processos):
+def get_statistic(pagina):
     '''
     Retorna dados estatísticos dos processos. 
     Quantidade de sentenças por temática.
     '''
+    processos = Processo.objects.filter(pagina=pagina)
     statistic = {}
     total = len(processos)
     statistic['total'] = total
@@ -99,6 +102,8 @@ def get_statistic(processos):
             tipo = p.tipo_fundo.split('/')[0].strip(' ')
         elif '-' in p.tipo_fundo:
             tipo = p.tipo_fundo.split('-')[0].strip(' ')
+        elif '(' in p.tipo_fundo:
+            tipo = p.tipo_fundo.split('(')[0].strip(' ')
         else:
             tipo = p.tipo_fundo
         try:
