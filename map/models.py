@@ -68,7 +68,8 @@ def from_csv_to_db(sender, instance, **kwargs):
                 city = Cidade.objects.get(nome=row['municipio'])
             except Cidade.DoesNotExist:
                 city = Cidade(nome=row['municipio'], longitude=row['longitude'], latitude=row['latitude'])
-                city = city.save()
+                city.save()
+                city = Cidade.objects.get(nome=row['municipio'])
 
             try:
                 process = Processo(numero=row['processo'],resumo=row['resumo'], tipo_fundo=row['tipo_fundo'], valor_ressarcimento=row['valor_ressarcimento'], valor_multa=row['valor_multa'])
