@@ -47,25 +47,30 @@ var municipio = [
 ["Uruçuí",-7.2363099,-44.555387, "<p align= justify><strong>Município:</strong> Uruçuí; <strong>Proc.:</strong> 2009.40.00.007082-9;<strong> Resumo:</strong> Irregularidades nos procedimentos licitatórios, como a frustração do caráter competitivo e indícios de simulação;<strong>Valor multa:</strong>R$ 70.000,00.</p>"],
 ["Estado do Piauí",-7.6992782,-42.5043787, "<p align= justify><strong>Estado:</strong> Piauí; <strong>Proc.:</strong> 2008.40.00.002624-2;<strong> Resumo:</strong> Irregularidades em convênio firmado entre o Incra e Cooptecara para prestação de serviços de elaboração de planos de desenvolvimento sustentável; <strong>Valor multa:</strong>R$ 40.000,00;<strong>  Proc.:</strong> 021698-76.2010.4.01.4000;<strong> Resumo:</strong> Analista em tecnologia da informação e convocado para compor comissões de concurso da FUNADEPI, beneficiou namorada e amigos com aprovação em cargos de Técnico em Análise Clínica do IFPI, Auditor-Controlador da Prefeitura de Timon, Almoxarife do IFPI e Analista de TI do IFPI; <strong>Valor multa:</strong>R$ 30.000,00; <strong>  Proc.:</strong> 24655-16.2011.4.01.4000;<strong> Resumo:</strong> Irregularidades na aplicação de recursos destinados a Planos de Desenvolvimento e Recuperação de Assentamentos do Estado do Piauí para 7.554 famílias em 101 Projetos de Assentamento; <strong>Valor ressarcimento:</strong> R$ 5.169,39; <strong>Valor multa:</strong>R$ 10.338,78; <strong>Proc.:</strong> 0017279-03.2016.4.01.4000;<strong> Resumo:</strong> Favoreceu servidores em processo de movimentação interna; <strong>Valor multa:</strong>R$ 20.000,00; <strong>Proc.:</strong> 2001.40.00.006277-8;<strong> Resumo:</strong> o Estado do Piauí vem se apropriando de até 33%(trinta e três por cento) das verbas referentes a produção ambulatorial das unidades públicas; b) o Estado do Piauí não aporta recursos próprios para custear os serviços de saúde; c) falsificação/adulteração de Autorizações de Internação Hospitalar (AIH’s) e guias de Sistema de Informação Ambulatorial (SIA/SUS); <strong>Valor ressarcimento:</strong> a ser apurado em sede de liquidação; <strong>Valor multa:</strong>a ser apurada em sede de liquidação.</p>"],
 
-		];
+    ];
 
 var map = L.map('map').setView([-7.6992782, -42.5043787], 6.6);
-L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-    attribution: '© <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-}).addTo(map);
-for (var i = 0; i < municipio.length; i++) {
-			marker = new L.marker([municipio[i][1],municipio[i][2]])
-				.bindPopup(municipio[i][3])
-        .addTo(map);
-		}
 
-		var tabelaMunicipio = document.querySelector("#tbmunicipio");
+/**
+ * Insere os pinos dentro do mapa e gera a lista de municípios
+ * na lateral
+ */
+function insertDataToMap(){
+  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+      attribution: '© <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+  }).addTo(map);
+  for (var i = 0; i < municipio.length; i++) {
+    marker = new L.marker([municipio[i][1],municipio[i][2]])
+      .bindPopup(municipio[i][3])
+      .addTo(map);
+  }
 
-		for (var i = 0; i < municipio.length; i++) {
-		  montaTabela(tabelaMunicipio, municipio[i][0], municipio[i][1], municipio[i][2]);
-			 	}//fim dofor
+  var tabelaMunicipio = document.querySelector("#tbmunicipio");
 
-
+  for (var i = 0; i < municipio.length; i++) {
+    montaTabela(tabelaMunicipio, municipio[i][0], municipio[i][1], municipio[i][2]);
+  }//fim dofor
+}
 
 function montaLink(cidade, lng, ltd){
   var tagA = document.createElement("a");
@@ -95,4 +100,45 @@ function montaTabela(tabela, cidade, lng, ltd) {
 
 function showMap(lng, ltd){
    map.setView([lng,ltd],12);
+}
+
+/**
+ * Converte os dados vindo do servidor para um formato esperado nas funções do mapa.
+ * 
+ * @param {Array} cidades conjunto de cidades com sentenças de improbidade
+ */
+function convertInputToHTML(cidades){
+  
+  return cidades.map(c => {
+    texto_popup = "<p align= justify><strong>Município:</strong> "+c.nome.trim()+"; ";
+    c.processos.forEach(p =>{
+      texto_popup += "<strong>Proc.:</strong> "+p.numero.trim()+";";
+      if(p.resumo)
+        texto_popup += "<strong>Resumo:</strong> "+p.resumo.trim()+"; ";
+      console.log(p.valor_ressarcimento);
+      if(p.valor_ressarcimento !== '0'){
+        var valor = parseInt(p.valor_ressarcimento.trim(), 10);
+        if(valor !== NaN)
+          valor = new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(valor);
+        else
+          valor = p.valor_ressarcimento;
+        texto_popup += "<strong>Valor ressarcimento:</strong> "+valor+"; ";
+      }
+      if(p.valor_multa !== '0'){
+        var valor = parseInt(p.valor_multa.trim(), 10);
+        if(valor !== NaN)
+          valor = new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(valor);
+        else
+          valor = p.valor_multa;
+        texto_popup += "<strong>Valor multa:</strong> "+valor+";";
+      }
+    });
+    texto_popup += "</p>";
+    return [
+      c.nome,
+      c.latitude,
+      c.longitude,
+      texto_popup,
+    ];
+  });
 }

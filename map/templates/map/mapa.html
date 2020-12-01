@@ -1,4 +1,4 @@
-{% extends 'home/base.html' %}
+{% extends 'map/base.html' %}
 {% block content %}
     {% load static %}
     <div class="container">
@@ -23,6 +23,7 @@
   		</div>
     </div>
   	<div class="container">
+	    {% if pagina %}
   		<div class="row">
   			<div class="col-md-9">
 			  	<div id="map" class="margin-top-5" style=" height: 950px; border: 1px solid #AAA;" >
@@ -74,7 +75,8 @@
   				<div class="row">
   					<div class="col-md-12 margin-bottom-30 margin-top-20">
                 		<div class="col-md-11">
-           					<img class="pull-right" src="{% static "assets/img/grafico_pizza.jpg" %}" alt="Percentual dos desvios nos serviços públicos por Área Temática" title="Percentual dos desvios nos serviços públicos por Área Temática">
+						    <div id="piechart" style="width: 900px; height: 500px;"></div>
+           					<!--<img class="pull-right" src="{% static "assets/img/grafico_pizza.jpg" %}" alt="Percentual dos desvios nos serviços públicos por Área Temática" title="Percentual dos desvios nos serviços públicos por Área Temática">-->
            				</div>
   			 		</div>
   				</div>
@@ -93,14 +95,62 @@
   				</div>
   			</div>
   		</div>
+		{% else %}
+		<p  class="margin-top-20" align= justify>Nenhum dado cadastrado no momento. Visite o <a href="/admin/">site admin</a> para inserir os dados da página.</p><br><br><br>
+		{% endif %}
   	</div>
+	<script src="{% static "assets/js/leaflet.js" %}"></script>
+	<script src="{% static "assets/js/mapa.js" %}"></script>
 	<script>
-		var selectAnos = document.getElementById('selectAnos');
+	    var selectAnos = document.getElementById('selectAnos');
+		var ano = selectAnos.value;
+	    //Realiza a requisição para o servidor
+		//Busca os dados dos municípios
+		let xhr = new XMLHttpRequest();
+		xhr.open('GET', '/mapa.html/info/'+"{{pagina.ano}}"+'/', true);
+
+		xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4){
+			if(xhr.status == 200){
+			municipio = convertInputToHTML(JSON.parse(xhr.responseText).cidades);
+			insertDataToMap();
+			}
+		}
+		}
+
+		xhr.send();
+		////
+		
 		function mudaAno(){
-			let ano = selectAnos.value;
-			window.location.href = 'http://localhost:8000/mapa.html/'+ano+'/';
+			ano = selectAnos.value;
+			window.location.href = '/mapa.html/'+ano+'/';
 		}
 		selectAnos.onchange = mudaAno;
 		//
 	</script>
+	<!--Define o gráfico pizza-->
+	<script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Temática', 'Quantidade de sentenças'],
+          ['Work',     11],
+          ['Eat',      2],
+          ['Commute',  2],
+          ['Watch TV', 2],
+          ['Sleep',    7]
+        ]);
+
+        var options = {
+          title: 'Percentual dos desvios nos serviços públicos por Área Temática'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
 {% endblock content %}

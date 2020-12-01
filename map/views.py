@@ -1,28 +1,72 @@
 from django.shortcuts import render
-from django.http import HttpResponseNotAllowed
+from django.http import HttpResponseNotAllowed, JsonResponse
 from django.views.decorators.http import require_http_methods
-from .models import Processo, Pagina
+from .models import Processo, Pagina, Cidade
 from datetime import date
+import json
 
 @require_http_methods(["GET"])
 def map(request):
+    '''
+    Retorna os dados referente ao ano mais recente.
+    '''
     last_pagina = Pagina.objects.last()
-    paginas = Pagina.objects.all()
-    processos = Processo.objects.filter(pagina=last_pagina)
-    s = get_statistic(processos)
-    context = {
-        'title': "Mapa de Improbidade",
-        'processos': processos,
-        'ano': last_pagina.ano,
-        'pagina': last_pagina,
-        'paginas': paginas,
-        'total_sentencas': s['total'],
-        'sentencas': s['sentencas'],
-    }
+    
+    if(last_pagina):
+        paginas = Pagina.objects.all()
+        processos = Processo.objects.filter(pagina=last_pagina)
+        s = get_statistic(processos)
+        context = {
+            'title': "Mapa de Improbidade",
+            'processos': list(processos.values()),
+            'ano': last_pagina.ano,
+            'pagina': last_pagina,
+            'paginas': list(paginas),
+            'total_sentencas': s['total'],
+            'sentencas': s['sentencas'],
+        }
+    else:
+        context = {
+            'title': "Mapa de Improbidade",
+            'processos': None,
+            'ano': None,
+            'pagina': None,
+            'paginas': None,
+            'total_sentencas': None,
+            'sentencas': None,
+        }
+    
+    
     return render(request, 'map/mapa.html', context)
 
 @require_http_methods(["GET"])
+def map_json(request, year):
+    '''
+    Retorna um objeto JSON com os dados referente ao ano.
+    '''
+    paginas = Pagina.objects.all()
+    try:
+        pagina = paginas.get(ano=year)
+    except Pagina.DoesNotExist:
+        return HttpResponseNotAllowed('<h1>Page not found</h1>')
+    cidades = Cidade.objects.all().values()
+    saida = list()
+    for cidade in cidades:
+        cidade['processos'] = list(Processo.objects.filter(pagina=pagina, cidade__id=cidade['id']).values())
+        if(len(cidade['processos']) != 0):
+            saida.append(cidade)
+    context = {
+        'title': "Mapa de Improbidade",
+        'cidades': saida,
+        'ano': year,
+    }
+    return JsonResponse(context, safe=True)
+
+@require_http_methods(["GET"])
 def map_by_year(request, year):
+    '''
+    Retorna dos dados referentes ao ano(year) requisitiado.
+    '''
     paginas = Pagina.objects.all()
     try:
         pagina = paginas.get(ano=year)
@@ -32,16 +76,20 @@ def map_by_year(request, year):
     s = get_statistic(processos)
     context = {
         'title': "Mapa de Improbidade",
-        'processos': processos,
+        'processos': list(processos.values()),
         'ano': year,
         'pagina': pagina,
-        'paginas': paginas,
+        'paginas': list(paginas),
         'total_sentencas': s['total'],
         'sentencas': s['sentencas'],
     }
     return render(request, 'map/mapa.html', context)
 
 def get_statistic(processos):
+    '''
+    Retorna dados estatísticos dos processos. 
+    Quantidade de sentenças por temática.
+    '''
     statistic = {}
     total = len(processos)
     statistic['total'] = total
