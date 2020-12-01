@@ -1,21 +1,37 @@
-{% extends 'home/base.html' %}
+{% extends 'map/base.html' %}
 {% block content %}
     {% load static %}
     <div class="container">
   		<div class="row">
   			<div class="col-md-12">
   	 			<div id="tit_mapa">Mapa das Sentenças de Improbidade</div>
-  				<div ><a href="mapa.html" alt="Mapa original" title="Mapa original">Mapa original</a></div>
+				</br>
+  				<div>
+				  <label for="selectAnos">Ano de referência:</label>
+				  <select name="selectAnos" id="selectAnos">
+				  	{% for pagina in paginas %}
+					    {% if ano == pagina.ano %}
+						<option value={{ pagina.ano }} selected>{{ pagina.ano }}</option>
+						{% else %}
+						<option value={{ pagina.ano }}>{{ pagina.ano }}</option>
+						{% endif %}
+					{% endfor %}
+				  </select>
+				
+				</div>
   			</div>
   		</div>
     </div>
   	<div class="container">
+	    {% if pagina %}
   		<div class="row">
-  			<div class="col-md-9"><div id="map" class="margin-top-5" style=" height: 950px; border: 1px solid #AAA;" > </div>
+  			<div class="col-md-9">
+			  	<div id="map" class="margin-top-5" style=" height: 950px; border: 1px solid #AAA;" >
+				</div>
   				<div class="row">
   					<div id="textomapa" class="col-md-12">
-  						 <p  class="margin-top-20" align= justify>O <b>Mapa das Sentenças de Improbidade</b> acima contempla as 66 decisões condenatórias proferidas pelas Varas da Justiça Federal no Piauí
-						no ano de 2018, tendo por base as ações de improbidade administrativa ajuizadas pelo Ministério Público Federal (MPF) no Estado do Piauí (PI)
+  						 <p  class="margin-top-20" align= justify>O <b>Mapa das Sentenças de Improbidade</b> acima contempla as {{ total_sentencas }} decisões condenatórias proferidas pelas Varas da Justiça Federal no Piauí
+						no ano de {{ pagina.ano }}, tendo por base as ações de improbidade administrativa ajuizadas pelo Ministério Público Federal (MPF) no Estado do Piauí (PI)
 						em anos anteriores. A partir desse marco, as condenações serão inseridas no Mapa ano a ano. A iniciativa atende ao princípio da transparência
 						ativa, fornecendo à sociedade as informações necessárias para o efetivo controle social, além de promover a prestação de contas da atuação ministerial,
 						na área do patrimônio público e social.</p>
@@ -41,29 +57,26 @@
 						<p><a href="http://www.mpf.mp.br/pi/municipios/procuradoria-da-republica-no-municipio-de-parnaiba" alt="Justiça Federal-1a Região" title="Justiça Federal-1a Região" target="_blank"> Municípios da Subseção Judiciária de Parnaíba</a></p>
 						<p><a href="http://www.mpf.mp.br/pi/municipios/procuradoria-da-republica-no-municipio-de-floriano" alt="Justiça Federal-1a Região" title="Justiça Federal-1a Região" target="_blank"> Municípios da Subseção Judiciária de Floriano</a></p>
 						</br>
-						<p align= justify><b>Estatísticas</b> – As 66 sentenças condenatórias proferidas pela 
-						Justiça Federal no Estado do Piauí, em primeira instância, dividem-se em nove áreas temáticas: 
-						Educação, Saúde, Infraestrutura, Seguridade Social, Princípios da Administração Pública, Assistência Social, 
-						Habitação, Reforma Agrária, Turismo e outros (categoria não definida):</p>
+						{% if sentencas %}
+						<p align= justify><b>Estatísticas</b> – As {{ total_sentencas }} sentenças condenatórias proferidas pela 
+						Justiça Federal no Estado do Piauí, em primeira instância, dividem-se em algumas áreas temáticas:</p>
 						<p>
 							<ul>
-								<li>Educação: 31 sentenças, do total de 66. O valor representa 46,97%</li>
-								<li>Saúde: 14 sentenças, do total de 66. O valor representa 21,21%</li>
-								<li>Infraestrutura: 6 sentenças, do total de 66. O valor representa 9,09%</li>
-								<li>Seguridade Social: 4 sentenças, do total de 66. O valor representa 6,06%</li>
-								<li>Assistência Social: 3 sentenças, do total de 66. O valor representa 4,55%</li>
-								<li>Outros: 3 sentenças, do total de 66. O valor representa 4,55%</li>
-								<li>Habitação: 2 sentenças, do total de 66. O valor representa 3,03%</li>
-								<li>Reforma Agrária: 2 sentenças, do total de 66. O valor representa 3,03%</li>
-								<li>Turismo: 1 sentença, do total de 66. O valor representa 1,52%</li>
+								{% for k, v in sentencas.items %}
+									<li>{{k}}: {{v.0}} sentenças, do total de {{ total_sentencas }}. O valor representa {{ v.1 | floatformat:2}}%</li>
+								{% endfor %}
 							</ul>
 						</p>
+						{% else %}
+						<p align= justify><b>Estatísticas</b> – Nenhuma sentença foi dada nesse ano.</p>
+						{% endif %}
   					</div>
   				</div>
   				<div class="row">
   					<div class="col-md-12 margin-bottom-30 margin-top-20">
                 		<div class="col-md-11">
-           					<img class="pull-right" src="{% static "assets/img/grafico_pizza.jpg" %}" alt="Percentual dos desvios nos serviços públicos por Área Temática" title="Percentual dos desvios nos serviços públicos por Área Temática">
+						    <div id="piechart" style="width: 900px; height: 500px;"></div>
+           					<!--<img class="pull-right" src="{% static "assets/img/grafico_pizza.jpg" %}" alt="Percentual dos desvios nos serviços públicos por Área Temática" title="Percentual dos desvios nos serviços públicos por Área Temática">-->
            				</div>
   			 		</div>
   				</div>
@@ -82,5 +95,58 @@
   				</div>
   			</div>
   		</div>
+		{% else %}
+		<p  class="margin-top-20" align= justify>Nenhum dado cadastrado no momento. Visite o <a href="/admin/">site admin</a> para inserir os dados da página.</p><br><br><br>
+		{% endif %}
   	</div>
+	<script src="{% static "assets/js/leaflet.js" %}"></script>
+	<script src="{% static "assets/js/mapa.js" %}"></script>
+	<script>
+	    var selectAnos = document.getElementById('selectAnos');
+		var ano = selectAnos.value;
+	    //Realiza a requisição para o servidor
+		//Busca os dados dos municípios
+		let xhr = new XMLHttpRequest();
+		var dados = null;
+		xhr.open('GET', '/mapa.html/info/'+"{{pagina.ano}}"+'/', true);
+
+		xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4){
+			if(xhr.status == 200){
+			dados = JSON.parse(xhr.responseText);
+			console.log(dados);
+			municipio = convertInputToHTML(dados.cidades);
+			insertDataToMap();
+			}
+		}
+		}
+
+		xhr.send();
+		////
+		
+		function mudaAno(){
+			ano = selectAnos.value;
+			window.location.href = '/mapa.html/'+ano+'/';
+		}
+		selectAnos.onchange = mudaAno;
+		/// Gerando gráfico pizza
+		google.charts.load('current', {'packages':['corechart']});
+      	google.charts.setOnLoadCallback(drawChart);
+		function drawChart() {
+			var sentencas = [['Temática', 'Quantidade de sentenças']];
+			
+			Object.keys(dados.sentencas).forEach(element => {
+				sentencas.push([element, dados.sentencas[element][0]]);
+			});
+			var data = google.visualization.arrayToDataTable(sentencas);
+	
+			var options = {
+			title: 'Percentual dos desvios nos serviços públicos por Área Temática'
+			};
+
+			var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+			chart.draw(data, options);
+		}
+	</script>
 {% endblock content %}

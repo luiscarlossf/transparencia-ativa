@@ -15,7 +15,7 @@ class Cidade(models.Model):
         return self.nome
 
 class Pagina(models.Model):
-    texto = models.TextField(verbose_name="Texto da página", help_text="Artigo presente abaixo do mapa das sentenças de improbidades.")
+    #texto = models.TextField(verbose_name="Texto da página", help_text="Artigo presente abaixo do mapa das sentenças de improbidades.")
     ano = models.IntegerField(verbose_name="Ano", help_text="Entre com o ano em que os dados da página foram coletados.")
     
     def __str__(self):
@@ -38,24 +38,6 @@ class Processo(models.Model):
         String representanda o processo.
         """
         return str(self.numero)
-
-class Estatistica(models.Model):
-    pagina = models.ForeignKey(Pagina, verbose_name="Página", on_delete=models.CASCADE)
-    total_sentencas = models.IntegerField(verbose_name="Total de sentenças")    
-    total_educacao = models.IntegerField(verbose_name="Quantidade em Educação")
-    total_saude = models.IntegerField(verbose_name="Quantidade em Saúde")
-    total_infraestrutura = models.IntegerField(verbose_name="Quantidade em Infraestrutura")
-    total_seguridade_social = models.IntegerField(verbose_name="Quantidade em Seguridade Social")
-    total_outros = models.IntegerField(verbose_name="Quantidade em Outras áreas")
-    total_assistencia_social = models.IntegerField(verbose_name="Quantidade em Assistência Social")
-    total_habitacao = models.IntegerField(verbose_name="Quantidade em Habitação")
-    total_reforma_agraria = models.IntegerField(verbose_name="Quantidade em Reforma Agrária")
-    total_turismo = models.IntegerField(verbose_name="Quantidade em Turismo")
-    def __str__(self):
-        """
-        String representanda a estatística.
-        """
-        return str(self.pagina.ano) +'-'+ str(self.total_sentencas)
 
 def data_directory_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
@@ -86,7 +68,8 @@ def from_csv_to_db(sender, instance, **kwargs):
                 city = Cidade.objects.get(nome=row['municipio'])
             except Cidade.DoesNotExist:
                 city = Cidade(nome=row['municipio'], longitude=row['longitude'], latitude=row['latitude'])
-                city = city.save()
+                city.save()
+                city = Cidade.objects.get(nome=row['municipio'])
 
             try:
                 process = Processo(numero=row['processo'],resumo=row['resumo'], tipo_fundo=row['tipo_fundo'], valor_ressarcimento=row['valor_ressarcimento'], valor_multa=row['valor_multa'])
