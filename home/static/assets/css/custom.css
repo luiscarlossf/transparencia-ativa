@@ -7,7 +7,16 @@ body
     font:"Titillium Web", sans-serif !important;
 }
 .municipio{
-  background-color:#F0FFFF;
+  padding-left: 30px;
+}
+
+select {
+  color: #3c8de6;
+  font-size: 1.1em;
+  font-weight: 500;
+  background-color: white;
+  padding:3px;
+  border: 1px solid rgba(0, 0, 0,0.15);
 }
 
 #lista_municipio{
@@ -30,7 +39,9 @@ body
     margin-top: 2%;
 }
 
-
+.grafico{
+  border-radius: 15px;
+}
 #voltar {
     margin-top: -2.5%;
     margin-right: 95%;
@@ -39,6 +50,7 @@ a
 {
     color: #3c8de6;
     font-size: 1em;
+    font-weight: 500;
     font:"Titillium Web", sans-serif !important;
 }
 a.link:link

@@ -464,7 +464,7 @@ h1.logo-text a {
 .btn-default {
   background-color: rgba(0, 0, 0, 0.0);
   border: 1px solid rgba(0, 0, 0, 0.05);
-  border-radius: 5px;
+  border-radius: 15px;
   /*box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.05) inset;*/
   margin: 0;
 }
@@ -978,9 +978,9 @@ h2 {
 }
 h3 {
   font-size: 20px;
-  font-weight: 300;
+  font-weight: 900;
   padding: 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   margin: 0;
   color: #2d2d2d;
 }
@@ -1015,6 +1015,7 @@ hr {
 }
 img {
   max-width: 100% ;
+  border-radius: 15px;
 }
 .icon-list {
   padding-left: 30px;
@@ -1328,7 +1329,7 @@ i.fa.center {
 .image-hover {
   background-color:#ffff !important;
   border: 1px solid rgba(0, 0, 0, 0.05);
-  border-radius: 5px;
+  border-radius: 15px;
   /*box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.05) inset;*/
   margin-bottom: 10px;
   padding: 15px;
@@ -1388,11 +1389,11 @@ i.fa.center {
 }
 .image-hover .btn {
   font-size: 0.9em;
-  right: 0px;
-  bottom: 0px;
+  left: 10px;
+  bottom: 10px;
   position: absolute;
   padding: 3px 15px;
-  border-width: 1px 0px 0 1px;
+  border-width: 1px 1px 1px 1px;
 }
 .portfolio-group {
   width: 100% !important;
