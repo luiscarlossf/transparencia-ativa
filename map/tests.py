@@ -1,4 +1,4 @@
-from django.test import TestCase,
+from django.test import TestCase
 
 # Testa se o upload do arquivo está sendo 
 # realizado corretamente
