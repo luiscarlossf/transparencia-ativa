@@ -7,7 +7,7 @@
   	 			<h1 id="tit_mapa">Mapa das Sentenças de Improbidade</h1>
 				</br>
   				<div>
-				  <label for="selectAnos">Ano de referência:</label>
+				  <label for="selectAnos"><strong>ANO DE REFERÊNCIA:</strong></label>
 				  <select class="anos" name="selectAnos" id="selectAnos">
 				  	{% for pagina in paginas %}
 					    {% if ano == pagina.ano %}
@@ -26,7 +26,7 @@
 	    {% if pagina %}
   		<div class="row">
   			<div class="col-md-9">
-			  	<div id="map" class="margin-top-5" style=" height: 950px; border: 1px solid #AAA;" >
+			  	<div id="map" class="margin-top-5" style=" height: 690px; border: 1px solid #AAA;" >
 				</div>
   				<div class="row">
   					<div id="textomapa" class="col-md-12">
@@ -82,7 +82,7 @@
   				</div>
   		 	</div>
   			<div class="col-md-3">
-  				<div class="margin-top-5" style=" background-color: white;" >
+  				<div class="margin-top-5" style="background-color: white;overflow:auto; height: 690px;" >
   					<table class="table table-hover">
   						<thead>
 							<tr >

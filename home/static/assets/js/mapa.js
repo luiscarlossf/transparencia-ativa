@@ -110,27 +110,27 @@ function showMap(lng, ltd){
 function convertInputToHTML(cidades){
   
   return cidades.map(c => {
-    texto_popup = "<p align= justify><strong>Município:</strong> "+c.nome.trim()+"; ";
+    texto_popup = "<p align= justify><strong>Município:</strong> "+c.nome.trim()+";";
     c.processos.forEach(p =>{
-      texto_popup += "<strong>Proc.:</strong> "+p.numero.trim()+";";
+      texto_popup += "<strong> Proc.:</strong> "+p.numero.trim()+";";
       if(p.resumo)
-        texto_popup += "<strong>Resumo:</strong> "+p.resumo.trim()+"; ";
+        texto_popup += "<strong> Resumo:</strong> "+p.resumo.trim()+";";
       if(p.valor_ressarcimento !== '0'){
         let valor = parseFloat(p.valor_ressarcimento.trim().replace(',','.'), 10);
         if(valor){
           valor = new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(valor);
-          texto_popup += "<strong>Valor ressarcimento:</strong> "+valor+"; ";
+          texto_popup += "<strong> Valor ressarcimento:</strong> "+valor+";";
         }else
-          texto_popup += "<strong>Valor ressarcimento:</strong> "+p.valor_ressarcimento+"; "; 
+          texto_popup += "<strong> Valor ressarcimento:</strong> "+p.valor_ressarcimento+";"; 
         
       }
       if(p.valor_multa !== '0'){
         let valor = parseFloat(p.valor_multa.trim().replace(',','.'), 10);
         if(valor){
           valor = new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(valor);
-          texto_popup += "<strong>Valor multa:</strong> "+valor+";";
+          texto_popup += "<strong> Valor multa:</strong> "+valor+";";
         }else
-          texto_popup += "<strong>Valor multa:</strong> "+p.valor_multa+";";
+          texto_popup += "<strong> Valor multa:</strong> "+p.valor_multa+";";
         
       }
     });
