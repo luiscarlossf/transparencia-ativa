@@ -108,7 +108,7 @@
 		//Busca os dados dos municípios
 		let xhr = new XMLHttpRequest();
 		var dados = null;
-		xhr.open('GET', '/mapa.html/info/'+"{{pagina.ano}}"+'/', true);
+		xhr.open('GET', '/ta/mapa.html/info/'+"{{pagina.ano}}"+'/', true);
 
 		xhr.onreadystatechange = function(){
 		if(xhr.readyState == 4){
@@ -125,7 +125,7 @@
 		
 		function mudaAno(){
 			ano = selectAnos.value;
-			window.location.href = '/mapa.html/'+ano+'/';
+			window.location.href = '/ta/mapa.html/'+ano+'/';
 		}
 		selectAnos.onchange = mudaAno;
 		/// Gerando gráfico pizza
