@@ -19,12 +19,13 @@ Ative a virtualenv para o seu projeto.
 Instale as dependências do projeto:
 
     $ pip install -r requirements.txt
-    
-Crie um arquivo transparencia-ativa/.env ;
 
-Copie o conteúdo de transparencia-ativa/.env.example para transparencia-ativa/.env ;
+## Definindo variáveis ambiente    
+- Crie um arquivo `.env` no diretório atual(transparencia-ativa);
 
-Defina os valores das variáveis em transparencia-ativa/.env 
+- Copie o conteúdo do arquivo `.env.example` para `.env`;
+
+- Defina os valores das variáveis em `.env`; 
 
 Então, simplesmente aplique as migrações:
 
