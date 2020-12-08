@@ -8,30 +8,32 @@ O objetivo do projeto é apresentar dados de sentenças de improbidade expedidas
 ![Default Map View](screenshots/map.png?raw=true "Title")
 
 # Começando
-
+#### Clonando o repositório
 Primeiro clone o repositório do GitHub e mude para o novo diretório:
 
     $ git clone git@github.com/luiscarlossf/transparencia-ativa.git
     $ cd transparencia-ativa
-    
+
+#### Instalando dependências 
 Ative a virtualenv para o seu projeto.
     
 Instale as dependências do projeto:
 
     $ pip install -r requirements.txt
 
-## Definindo variáveis ambiente    
+#### Definindo variáveis ambiente    
 - Crie um arquivo `.env` no diretório atual(transparencia-ativa);
 
 - Copie o conteúdo do arquivo `.env.example` para `.env`;
 
 - Defina os valores das variáveis em `.env`; 
 
+#### Migrando dados
 Então, simplesmente aplique as migrações:
 
     $ python manage.py migrate
     
-
+#### Executando o programa
 Você pode agora rodar o servidor de desenvolvimento:
 
     $ python manage.py runserver
