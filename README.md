@@ -20,7 +20,12 @@ Instale as dependências do projeto:
 
     $ pip install -r requirements.txt
     
-    
+Crie um arquivo transparencia-ativa/.env ;
+
+Copie o conteúdo de transparencia-ativa/.env.example para transparencia-ativa/.env ;
+
+Defina os valores das variáveis em transparencia-ativa/.env 
+
 Então, simplesmente aplique as migrações:
 
     $ python manage.py migrate
